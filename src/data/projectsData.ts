@@ -173,6 +173,8 @@ export const PROJECTS_DATA: Project[] = [
     summary: "Designed an intelligent conversational copilot for enterprise HR and IT operations, drastically deflecting repetitive queries and automating candidate screening.",
     challengeBrief: "HR & IT service desks spent thousands of hours handling repetitive policy inquiries, while recruiting teams spent days manually sorting unstructured resumes.",
     heroImageRatio: "16:9",
+    thumbnailImage: "/images/case-studies/tia-thumbnail.png",
+    heroImage: "/images/case-studies/tia-thumbnail.png",
     accentColor: "#6366F1",
     tags: ["Conversational AI", "Copilot UX", "Automation", "Recruiting"],
     sections: []

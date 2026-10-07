@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { 
-  Sparkles, CheckCircle2, MessageSquare, BarChart3,
-  ShieldCheck, Cpu, ArrowUpRight
+  CheckCircle2, BarChart3,
+  ShieldCheck, ArrowUpRight
 } from 'lucide-react';
 
 interface MockupVisualizerProps {
@@ -276,58 +276,22 @@ export const MockupVisualizer: FC<MockupVisualizerProps> = ({
     );
   }
 
-  // TIA (AI HR & IT Assistant)
+  // TIA (AI HR & IT Assistant / Model Training)
   return (
-    <div className={`w-full h-full bg-gradient-to-br from-indigo-950/90 via-slate-900 to-black p-4 sm:p-6 text-white flex flex-col justify-between select-none ${className}`}>
-      <div className="flex items-center justify-between pb-3 border-b border-white/10">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-indigo-500 flex items-center justify-center text-xs font-bold">
-            <Sparkles className="w-4 h-4 text-white" />
-          </div>
-          <div>
-            <div className="text-xs font-bold flex items-center gap-1.5">
-              <span>TIA Copilot</span>
-              <span className="px-1.5 py-0.2 rounded bg-indigo-500/30 text-[9px] text-indigo-200">AI Assistant</span>
-            </div>
-            <div className="text-[10px] text-white/50">HR &amp; IT Service Automation</div>
-          </div>
-        </div>
-        <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-          65% Ticket Deflection
+    <div className={`relative w-full h-full bg-slate-950 overflow-hidden flex flex-col group ${className}`}>
+      <img
+        src="/images/case-studies/tia-thumbnail.png"
+        alt="TIA AI HR & IT Assistant — StoHRM Model Training & Automated Knowledge Ingestion by Teja Sai"
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+        loading="lazy"
+      />
+      {/* Subtle Bottom Specular Overlay */}
+      <div className="absolute inset-x-0 bottom-0 py-2 px-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between text-[10px] text-white/90 backdrop-blur-[2px]">
+        <span className="font-semibold tracking-wide flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+          StoHRM AI Engine • Model Training &amp; FAQ Ingestion
         </span>
-      </div>
-
-      {/* Conversational Stream */}
-      <div className="space-y-2.5 my-2 text-xs">
-        {/* User Query */}
-        <div className="flex items-start gap-2 justify-end">
-          <div className="p-2.5 rounded-2xl rounded-tr-none bg-indigo-600/80 text-white max-w-[80%] text-[11px]">
-            Can you summarize candidate Priya's resume and check fit for the Senior Product Designer role?
-          </div>
-        </div>
-
-        {/* AI Response */}
-        <div className="flex items-start gap-2">
-          <div className="w-5 h-5 rounded-full bg-indigo-500/40 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <Cpu className="w-3 h-3 text-indigo-300" />
-          </div>
-          <div className="p-2.5 rounded-2xl rounded-tl-none bg-white/10 border border-white/10 text-white/90 max-w-[85%] text-[11px] space-y-1.5">
-            <div className="font-semibold text-accent flex items-center gap-1">
-              <CheckCircle2 className="w-3 h-3 text-emerald-400" /> 94% Skills Match • 8 Yrs SaaS / FinTech
-            </div>
-            <p className="text-white/75 text-[10px] leading-relaxed">
-              • Strong Design System &amp; Enterprise IA background.<br />
-              • Led 4+ multi-country product rollouts.<br />
-              • Recommendation: Schedule Round 1 Portfolio Review.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Input Prompt Box */}
-      <div className="p-2 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs text-white/50">
-        <span className="flex items-center gap-1.5 text-[11px]"><MessageSquare className="w-3 h-3" /> Ask TIA to schedule interview...</span>
-        <span className="px-2 py-0.5 rounded bg-white/10 text-[10px] text-white/80">Send ↵</span>
+        <span className="font-mono text-indigo-300">TIA Copilot</span>
       </div>
     </div>
   );
