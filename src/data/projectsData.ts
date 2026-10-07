@@ -151,32 +151,34 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: "tia",
     projectNumber: "06",
-    title: "TIA (AI HR & IT Assistant)",
-    tagline: "Designing an AI-powered conversational assistant that transforms enterprise support and recruitment workflows.",
+    title: "TIA – Conversational HR & ATS System",
+    tagline: "Accelerating enterprise recruitment and automating statutory HR support through a role-adaptive conversational workspace.",
     category: "AI / HR / Conversational UX",
     role: "Senior UX Designer",
     company: "Ascent HR Technologies",
-    timeline: "2024",
-    team: "1 Senior Designer, 1 AI/ML Lead, 4 Engineers",
-    platform: "Enterprise Web Application & Analytics Dashboard",
+    timeline: "3-Week Rapid Design Sprint",
+    team: "Senior Designer, VP of Tech, PHP & Backend Leads, HR/TA Stakeholders",
+    platform: "Desktop Web Platform (Enterprise AI)",
     contribution: [
-      "Conversational UX heuristics & multimodal interaction patterns",
-      "Recruiter resume-parsing & candidate evaluation interface",
-      "HR/IT intent resolution workflows & fallback handling",
-      "Enterprise prompt transparency & feedback telemetry"
+      "Miro Conversational Maps & Fallback Trees",
+      "Role-Based Desktop UI Layouts (Adobe XD)",
+      "Intelligent ATS Candidate Screening & Match Scores",
+      "Statutory HR Policy Ingestion & 1-Click Ticket Escalation",
+      "State & Latency Engineering (Multi-stage Skeleton Feedback)",
+      "Technical Handoff & Visual QA Reviews"
     ],
     highlightMetric: {
-      value: "65%",
-      label: "Support Ticket Deflection",
-      description: "Along with 70% reduction in recruiter resume-sorting time"
+      value: "-45%",
+      label: "Candidate Screening Time",
+      description: "Along with 65% support ticket deflection and instant SLA resolution"
     },
-    summary: "Designed an intelligent conversational copilot for enterprise HR and IT operations, drastically deflecting repetitive queries and automating candidate screening.",
-    challengeBrief: "HR & IT service desks spent thousands of hours handling repetitive policy inquiries, while recruiting teams spent days manually sorting unstructured resumes.",
+    summary: "Architected a hybrid conversational workspace and ATS screening engine for enterprise HR, recruitment, and employee support operations within a fast 3-week sprint.",
+    challengeBrief: "Recruiters were drowning in manual resume screening, while HR and IT teams were bogged down answering repetitive payroll, leave, attendance, and policy queries.",
     heroImageRatio: "16:9",
-    thumbnailImage: "/images/case-studies/tia-thumbnail.png",
-    heroImage: "/images/case-studies/tia-thumbnail.png",
+    thumbnailImage: "/images/case-studies/tia/tia-dashboard.png",
+    heroImage: "/images/case-studies/tia/tia-dashboard.png",
     accentColor: "#6366F1",
-    tags: ["Conversational AI", "Copilot UX", "Automation", "Recruiting"],
+    tags: ["Conversational AI", "ATS Screening", "Adobe XD", "Miro", "Enterprise UX"],
     sections: []
   }
 ];

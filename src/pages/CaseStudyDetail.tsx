@@ -11,6 +11,7 @@ import { ProcessTimeline } from '../components/ui/ProcessTimeline';
 import { LightboxModal, ExpandableImageWrapper } from '../components/ui/LightboxModal';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { StoHRMCaseStudy } from '../components/case-studies/StoHRMCaseStudy';
+import { TIACaseStudy } from '../components/case-studies/TIACaseStudy';
 
 export const CaseStudyDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -37,6 +38,55 @@ export const CaseStudyDetail = () => {
 
   const nextProject = PROJECTS_DATA[(projectIndex + 1) % PROJECTS_DATA.length];
   const prevProject = PROJECTS_DATA[(projectIndex - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length];
+
+  // Render dedicated deep-dive for TIA
+  if (id === 'tia') {
+    return (
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 pt-32 pb-28 space-y-20">
+        {/* Breadcrumb & Navigation */}
+        <div className="flex items-center justify-between text-xs text-foreground-muted">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors group"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to all projects</span>
+          </Link>
+          <div className="flex items-center gap-2 font-mono">
+            <span>{project.projectNumber} / 06</span>
+          </div>
+        </div>
+
+        {/* Deep Dive TIA Narrative */}
+        <TIACaseStudy project={project} />
+
+        {/* Bottom Pagination Controls */}
+        <div className="flex items-center justify-between pt-12 border-t border-border-glass">
+          <Link
+            to={`/work/${prevProject.id}`}
+            className="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <div className="text-left">
+              <span className="text-[10px] uppercase font-mono block text-foreground-muted">Previous</span>
+              <span className="font-semibold text-foreground">{prevProject.title}</span>
+            </div>
+          </Link>
+
+          <Link
+            to={`/work/${nextProject.id}`}
+            className="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors group text-right"
+          >
+            <div>
+              <span className="text-[10px] uppercase font-mono block text-foreground-muted">Next</span>
+              <span className="font-semibold text-foreground">{nextProject.title}</span>
+            </div>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   // Specific content mapping based on project ID
   return (
