@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowRight, ArrowUpRight, Sparkles, ChevronDown, Layers, 
-  Cpu, Compass, CheckCircle2 
+  ArrowRight, Sparkles, ChevronDown, Layers, 
+  Cpu, Compass, CheckCircle2, Download 
 } from 'lucide-react';
 import { PROFILE_INFO, VERIFIED_METRICS } from '../data/profileData';
 import { PROJECTS_DATA } from '../data/projectsData';
@@ -72,13 +72,15 @@ export const Home = () => {
             <ArrowRight className="w-4 h-4" />
           </a>
 
-          <Link
-            to="/resume"
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-full liquid-glass hover:bg-surface-glass-hover text-foreground font-semibold text-sm transition-all border border-border-glass hover:border-accent/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          <a
+            href="/Teja_Sai_Resume.pdf"
+            download="Tejasai_Thunuguntla_Resume.pdf"
+            className="inline-flex items-center gap-2 px-7 py-4 rounded-full liquid-glass hover:bg-surface-glass-hover text-foreground font-semibold text-sm transition-all border border-border-glass hover:border-accent/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+            title="Download Teja Sai's Resume (PDF)"
           >
-            <span>View resume</span>
-            <ArrowUpRight className="w-4 h-4 opacity-70" />
-          </Link>
+            <span>Download CV</span>
+            <Download className="w-4 h-4 text-accent" />
+          </a>
         </motion.div>
 
         {/* Subtle Scroll Indicator placed cleanly below CTA buttons */}

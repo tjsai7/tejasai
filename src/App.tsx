@@ -7,7 +7,6 @@ import { Home } from './pages/Home';
 import { WorkIndex } from './pages/WorkIndex';
 import { CaseStudyDetail } from './pages/CaseStudyDetail';
 import { About } from './pages/About';
-import { Resume } from './pages/Resume';
 import { Contact } from './pages/Contact';
 
 // Scroll to top on route change helper
@@ -36,7 +35,6 @@ export default function App() {
           <Route path="/work" element={<WorkIndex />} />
           <Route path="/work/:id" element={<CaseStudyDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

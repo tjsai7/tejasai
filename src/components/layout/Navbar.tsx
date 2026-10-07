@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Menu, X, Download, ArrowUpRight } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { PROFILE_INFO } from '../../data/profileData';
 
 const NAV_ITEMS = [
   { name: 'Work', path: '/work' },
   { name: 'About', path: '/about' },
-  { name: 'Resume', path: '/resume' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -40,8 +39,8 @@ export const Navbar = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className={`pointer-events-auto flex items-center justify-between transition-all duration-300 ${
             isScrolled
-              ? 'py-2.5 px-4 sm:px-6 w-full max-w-4xl liquid-glass rounded-full shadow-2xl scale-[0.98]'
-              : 'py-3.5 px-5 sm:px-8 w-full max-w-5xl liquid-glass rounded-full shadow-glass'
+              ? 'py-2 px-4 sm:px-6 w-full max-w-4xl liquid-glass rounded-full shadow-2xl scale-[0.98]'
+              : 'py-3 px-5 sm:px-8 w-full max-w-5xl liquid-glass rounded-full shadow-glass'
           }`}
           aria-label="Main Navigation"
         >
@@ -94,8 +93,19 @@ export const Navbar = () => {
             })}
           </div>
 
-          {/* Right Controls: Theme Switcher & Mobile Menu Toggle */}
+          {/* Right Controls: Download CV CTA & Theme Switcher */}
           <div className="flex items-center gap-2">
+            {/* Header Download CV CTA Button */}
+            <a
+              href="/Teja_Sai_Resume.pdf"
+              download="Tejasai_Thunuguntla_Resume.pdf"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background font-semibold text-xs hover:opacity-90 hover:scale-105 active:scale-95 transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              title="Download Teja Sai's Resume (PDF)"
+            >
+              <Download className="w-3.5 h-3.5 text-accent" />
+              <span>Download CV</span>
+            </a>
+
             {/* Light / Dark Mode Switch */}
             <button
               onClick={toggleTheme}
@@ -131,7 +141,7 @@ export const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden bg-background/80 backdrop-blur-2xl flex flex-col justify-between p-6 pt-28"
+            className="fixed inset-0 z-40 md:hidden bg-background/85 backdrop-blur-2xl flex flex-col justify-between p-6 pt-28"
           >
             <div className="flex flex-col gap-4">
               <span className="text-xs uppercase tracking-widest text-foreground-muted font-semibold px-4">
@@ -165,6 +175,27 @@ export const Navbar = () => {
                   </motion.div>
                 );
               })}
+
+              {/* Mobile Download CV Action Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.3 }}
+                className="pt-2"
+              >
+                <a
+                  href="/Teja_Sai_Resume.pdf"
+                  download="Tejasai_Thunuguntla_Resume.pdf"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-4 rounded-2xl bg-foreground text-background text-base font-bold shadow-lg"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Download className="w-5 h-5 text-accent" />
+                    <span>Download CV (PDF)</span>
+                  </div>
+                  <span className="text-xs px-2 py-0.5 rounded bg-background/20 text-background font-mono">10+ Yrs</span>
+                </a>
+              </motion.div>
             </div>
 
             {/* Mobile Footer Info in Drawer */}

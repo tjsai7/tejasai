@@ -81,9 +81,15 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/resume" className="text-foreground hover:text-accent transition-colors">
-                  Resume &amp; Credentials
-                </Link>
+                <a
+                  href="/Teja_Sai_Resume.pdf"
+                  download="Tejasai_Thunuguntla_Resume.pdf"
+                  className="text-foreground hover:text-accent transition-colors inline-flex items-center gap-1"
+                  title="Download Teja Sai's Resume (PDF)"
+                >
+                  <span>Download CV</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
               </li>
               <li>
                 <Link to="/contact" className="text-foreground hover:text-accent transition-colors">
