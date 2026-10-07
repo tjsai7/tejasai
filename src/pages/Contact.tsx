@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Mail, Phone, MapPin, Linkedin, ArrowUpRight, 
-  Send, Sparkles, CheckCircle2, Copy, Check 
+  Send, Sparkles, CheckCircle2, Copy, Check, Loader2, AlertCircle 
 } from 'lucide-react';
 import { PROFILE_INFO } from '../data/profileData';
 import { usePageSEO } from '../hooks/usePageSEO';
@@ -14,7 +14,8 @@ export const Contact = () => {
   });
 
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,11 +29,50 @@ export const Contact = () => {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Simulate submission
-    setFormSubmitted(true);
+    setFormStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      // Use FormSubmit AJAX direct delivery to tjsai7@gmail.com with zero configuration needed
+      const response = await fetch('https://formsubmit.co/ajax/tjsai7@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          opportunityType: formData.opportunityType,
+          message: formData.message,
+          _subject: `[Portfolio Inquiry] ${formData.opportunityType} - ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+        setFormStatus('success');
+      } else {
+        // Direct client fallback
+        setFormStatus('error');
+        setErrorMessage('Unable to send via automated gateway. Please click the button below to send directly from your email.');
+      }
+    } catch (err) {
+      setFormStatus('error');
+      setErrorMessage('Network error occurred. Please click the button below to send directly from your email.');
+    }
   };
+
+  const mailtoFallbackUrl = `mailto:${PROFILE_INFO.email}?subject=${encodeURIComponent(
+    `[Portfolio Inquiry] ${formData.opportunityType} - ${formData.name || 'New Opportunity'}`
+  )}&body=${encodeURIComponent(
+    `Hi Teja,\n\n${formData.message || 'I would like to discuss a Product Design opportunity with you.'}\n\nBest regards,\n${formData.name || ''}\n${formData.email || ''}`
+  )}`;
 
   return (
     <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 pt-32 pb-28 space-y-16">
@@ -107,9 +147,9 @@ export const Contact = () => {
 
           {/* Quick Notice Card */}
           <div className="p-6 rounded-3xl liquid-glass border border-border-glass space-y-2 text-xs text-foreground-muted">
-            <span className="font-bold text-foreground block">Response Time Commitment</span>
+            <span className="font-bold text-foreground block">Direct Delivery Guarantee</span>
             <p className="leading-relaxed">
-              I typically respond to serious product design inquiries and interview invitations within 24 hours.
+              Inquiries sent via this form go straight to <strong className="text-foreground">{PROFILE_INFO.email}</strong>. I typically respond to serious product design opportunities within 24 hours.
             </p>
           </div>
         </div>
@@ -117,7 +157,7 @@ export const Contact = () => {
         {/* Right Form Column */}
         <div className="lg:col-span-7">
           <div className="liquid-glass-card rounded-3xl p-8 sm:p-10 border border-border-glass">
-            {formSubmitted ? (
+            {formStatus === 'success' ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -126,13 +166,13 @@ export const Contact = () => {
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center border border-emerald-500/30">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Message Received!</h3>
+                <h3 className="text-2xl font-bold text-foreground">Message Delivered!</h3>
                 <p className="text-sm text-foreground-muted max-w-sm mx-auto">
-                  Thank you for reaching out. I'll review your note and get back to you promptly at <span className="font-semibold text-foreground">{formData.email}</span>.
+                  Thank you for reaching out, <span className="font-semibold text-foreground">{formData.name}</span>. Your inquiry has been forwarded directly to <strong className="text-foreground">{PROFILE_INFO.email}</strong>. I will be in touch shortly.
                 </p>
                 <button
                   onClick={() => {
-                    setFormSubmitted(false);
+                    setFormStatus('idle');
                     setFormData({ name: '', email: '', opportunityType: 'Senior / Staff Product Design Role', message: '' });
                   }}
                   className="px-6 py-2.5 rounded-full liquid-glass text-xs font-semibold text-foreground hover:bg-surface-glass-hover transition-all"
@@ -145,9 +185,26 @@ export const Contact = () => {
                 <div>
                   <h3 className="text-xl font-bold text-foreground">Send an Inquiry</h3>
                   <p className="text-xs text-foreground-muted mt-1">
-                    Fill out the form below or email me directly at {PROFILE_INFO.email}.
+                    Delivered directly to {PROFILE_INFO.email}.
                   </p>
                 </div>
+
+                {formStatus === 'error' && (
+                  <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-bold text-red-400">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{errorMessage}</span>
+                    </div>
+                    <a
+                      href={mailtoFallbackUrl}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-red-500 text-white font-semibold text-xs hover:opacity-90 transition-all"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Click to send via your email client</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                )}
 
                 <div className="space-y-4">
                   <div>
@@ -211,10 +268,20 @@ export const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-foreground text-background font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg"
+                  disabled={formStatus === 'submitting'}
+                  className="w-full py-3.5 rounded-full bg-foreground text-background font-semibold text-xs uppercase tracking-wider hover:opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-2 shadow-lg"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Send Message</span>
+                  {formStatus === 'submitting' ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-accent" />
+                      <span>Sending Inquiry to Teja...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Send Message to Teja</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
