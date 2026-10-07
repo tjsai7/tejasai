@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="18" fill="#0D0D11" />
+  <rect x="1" y="1" width="62" height="62" rx="17" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  <!-- Glass effect layer -->
+  <circle cx="20" cy="18" r="16" fill="url(#glow)" opacity="0.6" />
+  <!-- Monogram TS -->
+  <path d="M18 22H36M27 22V44" stroke="#F5F5F7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 28C46 28 43 24 37 24C32 24 30 27 30 30C30 35 46 33 46 40C46 44 42 46 36 46C31 46 28 42 28 42" stroke="#8B7CFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20 18) rotate(90) scale(18)">
+      <stop stop-color="#8B7CFF" />
+      <stop offset="1" stop-color="#8B7CFF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg>
