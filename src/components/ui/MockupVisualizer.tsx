@@ -278,15 +278,15 @@ export const MockupVisualizer: FC<MockupVisualizerProps> = ({
 
   // TIA (AI HR & IT Assistant / Model Training)
   return (
-    <div className={`relative w-full h-full bg-slate-950 overflow-hidden flex flex-col group ${className}`}>
+    <div className={`relative w-full h-full bg-white dark:bg-slate-950 overflow-hidden flex flex-col group ${className}`}>
       <img
         src="/images/case-studies/tia-thumbnail.png"
         alt="TIA AI HR & IT Assistant — StoHRM Model Training & Automated Knowledge Ingestion by Teja Sai"
-        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+        className="w-full h-full object-cover [object-position:center_top] transition-transform duration-500 group-hover:scale-[1.02]"
         loading="lazy"
       />
       {/* Subtle Bottom Specular Overlay */}
-      <div className="absolute inset-x-0 bottom-0 py-2 px-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between text-[10px] text-white/90 backdrop-blur-[2px]">
+      <div className="absolute inset-x-0 bottom-0 py-2 px-3 bg-gradient-to-t from-black/85 via-black/50 to-transparent flex items-center justify-between text-[10px] text-white/90 backdrop-blur-[2px]">
         <span className="font-semibold tracking-wide flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
           StoHRM AI Engine • Model Training &amp; FAQ Ingestion
