@@ -51,9 +51,16 @@ export const Footer = () => {
         {/* Footer Navigation & Brand Row */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-border-glass/60">
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-xl tracking-tight text-foreground">
-                {PROFILE_INFO.name.toUpperCase()}
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex items-center justify-center border border-border-glass bg-[#070707] p-0.5">
+                <img
+                  src="/favicon.svg"
+                  alt="Tejasai Thunuguntla Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="font-extrabold text-lg tracking-tight text-foreground font-display">
+                tejasai thunuguntla
               </span>
             </div>
             <p className="text-sm text-foreground-muted max-w-sm leading-relaxed">
