@@ -53,6 +53,8 @@ export interface Project {
   summary: string;
   challengeBrief: string;
   heroImageRatio: '16:9' | '16:10';
+  thumbnailImage?: string;
+  heroImage?: string;
   accentColor?: string;
   sections: CaseStudySection[];
   tags: string[];

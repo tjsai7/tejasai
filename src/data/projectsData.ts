@@ -142,6 +142,8 @@ export const PROJECTS_DATA: Project[] = [
     summary: "Architected a high-performance desktop application for wealth managers and portfolio advisors, balancing extreme data density with effortless navigation.",
     challengeBrief: "Wealth advisors were forced to tab across 8+ legacy tools to reconcile client portfolios, execute rebalancing trades, and review real-time market data.",
     heroImageRatio: "16:10",
+    thumbnailImage: "/images/case-studies/wealthforce-thumbnail.png",
+    heroImage: "/images/case-studies/wealthforce-thumbnail.png",
     accentColor: "#EC4899",
     tags: ["Desktop App", "Wealth Management", "High-Density IA", "Data Viz"],
     sections: []

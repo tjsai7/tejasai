@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { 
-  Sparkles, CheckCircle2, MessageSquare, BarChart3, TrendingUp,
+  Sparkles, CheckCircle2, MessageSquare, BarChart3,
   ShieldCheck, Cpu, ArrowUpRight
 } from 'lucide-react';
 
@@ -254,53 +254,23 @@ export const MockupVisualizer: FC<MockupVisualizerProps> = ({
     );
   }
 
-  // Wealthforce Desktop Application
+  // Wealthforce Desktop Application (eMACH.ai RM Portal)
   if (projectId === 'wealthforce') {
     return (
-      <div className={`w-full h-full bg-neutral-950 p-4 sm:p-6 text-white flex flex-col justify-between select-none ${className}`}>
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-pink-600 flex items-center justify-center text-xs font-bold">
-              WF
-            </div>
-            <div>
-              <div className="text-xs font-bold">Wealthforce Advisor Terminal</div>
-              <div className="text-[10px] text-white/50">Portfolio Rebalancing &amp; Order Execution</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 text-[10px]">
-            <span className="text-emerald-400 font-mono flex items-center gap-1"><TrendingUp className="w-3 h-3" /> Live Feed</span>
-            <span className="px-2 py-0.5 rounded bg-white/10 font-mono">AUM: $1.42B</span>
-          </div>
-        </div>
-
-        {/* High Density Desktop Grid */}
-        <div className="grid grid-cols-3 gap-2 my-2 text-xs">
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
-            <span className="text-[10px] text-white/50">Asset Allocation</span>
-            <div className="text-base font-bold text-white">62% Equity / 38% Fixed</div>
-            <span className="text-[9px] text-emerald-400">+3.4% Target Offset</span>
-          </div>
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
-            <span className="text-[10px] text-white/50">Pending Rebalance</span>
-            <div className="text-base font-bold text-amber-400">14 Portfolios</div>
-            <span className="text-[9px] text-white/50">Auto-tax loss harvest</span>
-          </div>
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
-            <span className="text-[10px] text-white/50">Execution Latency</span>
-            <div className="text-base font-bold text-pink-400">18ms</div>
-            <span className="text-[9px] text-white/50">Direct Market Access</span>
-          </div>
-        </div>
-
-        <div className="p-2 rounded bg-white/[0.03] border border-white/5 flex items-center justify-between text-[11px] font-mono">
-          <span>Client: Apex Capital Global Holdings</span>
-          <span className="text-emerald-400 font-semibold">1-Click Rebalance Ready [Shift+Enter]</span>
-        </div>
-
-        <div className="text-[10px] text-white/40 pt-2 border-t border-white/10 flex justify-between">
-          <span>Multi-Monitor Workspace Mode</span>
-          <span>Keyboard Shortcuts Enabled</span>
+      <div className={`relative w-full h-full bg-neutral-950 overflow-hidden flex flex-col group ${className}`}>
+        <img
+          src="/images/case-studies/wealthforce-thumbnail.png"
+          alt="Wealthforce eMACH.ai RM Portal — Mutual Fund Portfolio & Holdings Management by Teja Sai"
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+        {/* Subtle Bottom Specular Overlay */}
+        <div className="absolute inset-x-0 bottom-0 py-2 px-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between text-[10px] text-white/90 backdrop-blur-[2px]">
+          <span className="font-semibold tracking-wide flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            eMACH.ai RM Portal • Mutual Fund Holdings
+          </span>
+          <span className="font-mono text-white/70">Wealthforce FinTech</span>
         </div>
       </div>
     );
