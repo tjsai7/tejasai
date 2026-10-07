@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
 interface DeviceMockupProps {
-  type: 'mobile' | 'laptop' | 'desktop' | 'tablet';
+  type: 'mobile' | 'laptop' | 'desktop' | 'tablet' | 'macbook-screen';
   children?: ReactNode;
   imgSrc?: string;
   alt?: string;
@@ -39,30 +39,24 @@ export const DeviceMockup: FC<DeviceMockupProps> = ({
     );
   }
 
-  if (type === 'laptop') {
+  // MacBook Screen Display (Clean bezels, Camera Dot, No keyboard base)
+  if (type === 'macbook-screen' || type === 'laptop') {
     return (
-      <div className={`relative mx-auto w-full max-w-4xl ${className}`}>
-        {/* Screen Frame */}
-        <div className="relative aspect-[16/10] bg-neutral-950 rounded-t-2xl p-2.5 sm:p-3 border border-neutral-800 shadow-2xl">
-          {/* Camera Notch Dot */}
-          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neutral-800 flex items-center justify-center">
-            <div className="w-1 h-1 rounded-full bg-neutral-900" />
+      <div className={`relative mx-auto w-full max-w-5xl ${className}`}>
+        <div className="relative aspect-[16/10] bg-neutral-950 rounded-2xl p-2.5 sm:p-3.5 border border-neutral-800 shadow-2xl flex flex-col ring-1 ring-white/10">
+          {/* Top Camera Dot */}
+          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center z-20">
+            <div className="w-0.5 h-0.5 rounded-full bg-blue-950" />
           </div>
 
-          {/* Screen Content */}
-          <div className="relative w-full h-full rounded-lg overflow-hidden bg-background border border-border-glass">
+          {/* Screen Display Content */}
+          <div className="relative w-full h-full rounded-xl overflow-hidden bg-background border border-border-glass flex flex-col">
             {imgSrc ? (
-              <img src={imgSrc} alt={alt} className="w-full h-full object-cover" loading="lazy" />
+              <img src={imgSrc} alt={alt} className="w-full h-full object-cover [object-position:center_top]" loading="lazy" />
             ) : (
               children
             )}
           </div>
-        </div>
-
-        {/* Laptop Base Chin */}
-        <div className="relative h-3 sm:h-4 bg-gradient-to-b from-neutral-300 to-neutral-400 dark:from-neutral-700 dark:to-neutral-800 rounded-b-xl shadow-lg border-t border-neutral-400/40">
-          {/* Trackpad indentation notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 sm:w-28 h-1 bg-neutral-500/40 rounded-b-sm" />
         </div>
       </div>
     );

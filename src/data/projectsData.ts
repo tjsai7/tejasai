@@ -158,7 +158,7 @@ export const PROJECTS_DATA: Project[] = [
     company: "Ascent HR Technologies",
     timeline: "2024",
     team: "1 Senior Designer, 1 AI/ML Lead, 4 Engineers",
-    platform: "Web, Mobile & Embedded Slack/Teams Copilot",
+    platform: "Enterprise Web Application & Analytics Dashboard",
     contribution: [
       "Conversational UX heuristics & multimodal interaction patterns",
       "Recruiter resume-parsing & candidate evaluation interface",
