@@ -47,23 +47,18 @@ export const Navbar = () => {
           {/* Logo / Monogram */}
           <Link
             to="/"
-            className="group flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full py-1 pr-2"
+            className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full py-1 pr-2"
           >
-            <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-border-glass group-hover:border-accent/50 transition-all duration-300 shadow-sm bg-[#070707] p-0.5">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden flex items-center justify-center border border-border-glass group-hover:border-accent/50 transition-all duration-300 shadow-sm bg-[#070707] p-0.5">
               <img
                 src="/favicon.svg"
                 alt="Tejasai Thunuguntla Logo"
                 className="w-full h-full object-contain rounded-full group-hover:scale-105 transition-transform"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-foreground transition-colors group-hover:text-accent font-display">
-                tejasai thunuguntla
-              </span>
-              <span className="text-[10px] uppercase tracking-wider text-foreground-muted font-medium hidden sm:inline-block">
-                Product Designer
-              </span>
-            </div>
+            <span className="font-extrabold text-base sm:text-lg tracking-tight text-foreground transition-colors group-hover:text-accent font-display">
+              tejasai thunuguntla
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
